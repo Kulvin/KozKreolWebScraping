@@ -7,6 +7,8 @@ page = requests.get(
 
 soup = BeautifulSoup(page.content, "html.parser")
 
-dict = soup.find_all('ul', id="dictionarylist")
+dict = soup.find('ul', id="dictionarylist")
 
-print(dict)
+headers = [heading.text for heading in dict.find_all('li')]
+
+print(headers)
