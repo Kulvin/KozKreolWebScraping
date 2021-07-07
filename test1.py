@@ -1,5 +1,6 @@
 # Import libraries
 import requests
+import pandas as pd
 from bs4 import BeautifulSoup
 
 page = requests.get(
@@ -9,11 +10,22 @@ soup = BeautifulSoup(page.text, "html.parser")
 
 # dict = soup.find('span', id="dictionarylist")
 
-main = soup.find_all('span', {"class": "main"})
+kreol = soup.find('span', {"class": "main"})
 
-desc = soup.find_all('div', {"class": "desc"})
+eng = soup.find('div', {"class": "desc"})
 
-result = main & desc
+kreol1 = kreol.text
+eng1 = eng.text
+
+dictionary = {"Kreol": kreol1, "English": eng1}
+data = []
+data.append(dictionary)
+
+df = pd.DataFrame(dictionary)
+
+df.head()
+
+# results = main.text + desc.text
 
 # main = [kreol.text for kreol in dict.find_all('span')]
 
@@ -22,4 +34,4 @@ result = main & desc
 # # results = [{main[index]:cell.text for index,
 # #             cell in enumerate(eng.find_all("div"))} for eng in desc]
 
-print(result)
+# print(results)
