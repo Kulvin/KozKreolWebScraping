@@ -14,17 +14,6 @@ kreol = soup.find('span', {"class": "main"})
 
 eng = soup.find('div', {"class": "desc"})
 
-kreol1 = kreol.text
-eng1 = eng.text
-
-dictionary = {"Kreol": kreol1, "English": eng1}
-data = []
-data.append(dictionary)
-
-df = pd.DataFrame(dictionary)
-
-df.head()
-
 # results = main.text + desc.text
 
 # main = [kreol.text for kreol in dict.find_all('span')]
@@ -34,4 +23,4 @@ df.head()
 # # results = [{main[index]:cell.text for index,
 # #             cell in enumerate(eng.find_all("div"))} for eng in desc]
 
-# print(results)
+print(kreol.text, eng.text)
